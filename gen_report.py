@@ -3,7 +3,7 @@ import os
 from openpyxl import load_workbook
 from openpyxl.chart import Reference, BarChart
 
-# Combining files to Excel, all Excel files in the folder will be combine
+# Combine files to Excel, all Excel files in the folder will be combine
 path = r'C:\Users\Daniel\Desktop\Python\Project\data\\'
 files = os.listdir(path)
 combined = pd.DataFrame()
@@ -22,10 +22,10 @@ summary = pd.pivot_table(
     
 )
 
-# Exporting grouped data to Excel
+# Export grouped data to Excel
 summary.to_excel(r'C:\Users\Daniel\Desktop\Summary.xlsx')
 
-# Inserting and customizing data
+# Insert and customize data
 wb = load_workbook(r'C:\Users\Daniel\Desktop\Summary.xlsx')
 ws = wb['Sheet1']
 
@@ -47,7 +47,7 @@ for cell in range(5, ws.max_row+1):
 for cell in range(5, ws.max_row+1):
     ws[f'D{cell}'].style= "Currency"
     
-# Adding Charts to Worbook
+# Add Charts to Worbook
 data = Reference(ws, min_col=2, max_col=2, min_row=5, max_row=ws.max_row)
 categories = Reference(ws, min_col=1, max_col=1, min_row=5, max_row=ws.max_row)
 
@@ -92,5 +92,5 @@ chart2.title = "Horiznotal Bar Chart"
 ws.add_chart(chart2, "P4")
 chart.legend = None
 
-# Saving report to Excel file
+# Save report to Excel file
 wb.save(r'C:\Users\Daniel\Desktop\Summary.xlsx')
